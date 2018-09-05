@@ -13,7 +13,7 @@ Send a POST request::
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 
-IP = ''
+IP = '10.100.120.115'
 
 
 class S(BaseHTTPRequestHandler):
@@ -36,12 +36,14 @@ class S(BaseHTTPRequestHandler):
         print post_data # <-- Print post data
         self._set_headers()
         self.wfile.write("<html><body><h1>POST!</h1></body></html>")
-        
-def run(server_class=HTTPServer, handler_class=S, port=9090):
+
+
+def run(server_class=HTTPServer, handler_class=S, port=8988):
     server_address = (IP, port)
     httpd = server_class(server_address, handler_class)
-    print 'Starting httpd...' + IP + '9090'
+    print 'Starting httpd...' + IP + '.8988'
     httpd.serve_forever()
+
 
 if __name__ == "__main__":
     from sys import argv

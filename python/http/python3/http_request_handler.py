@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 
 # define ip:port
-hostName = ""
+hostName = "10.100.120.115"
 hostPort = 8988
 
 
