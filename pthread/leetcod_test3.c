@@ -49,6 +49,7 @@ void zero(ZeroEvenOdd* obj) {
 }
 
 void even(ZeroEvenOdd* obj) {
+	sleep(5);
 	while(1) {
 		pthread_mutex_lock(&obj->mutex);
 		printf("even lock %s %d\n", __func__, __LINE__);
@@ -66,8 +67,8 @@ void even(ZeroEvenOdd* obj) {
 		//printNumber(obj->val);
 		obj->flag = 0;
 		printf("even send cond_zero signal %s %d\n", __func__, __LINE__);
-		pthread_cond_signal(&obj->cond_zero);
 		pthread_mutex_unlock(&obj->mutex);
+		pthread_cond_signal(&obj->cond_zero);
 		printf("even unlock %s %d\n", __func__, __LINE__);
 	}
 }
@@ -90,8 +91,8 @@ void odd(ZeroEvenOdd* obj) {
 		//printNumber(obj->val);
 		obj->flag = 0;
 		printf("odd send cond_zero signal %s %d\n", __func__, __LINE__);
-		pthread_cond_signal(&obj->cond_zero);
 		pthread_mutex_unlock(&obj->mutex);
+		pthread_cond_signal(&obj->cond_zero);
 		printf("odd unlock %s %d\n", __func__, __LINE__);
 	}
 }
@@ -103,7 +104,6 @@ void zeroEvenOddFree(ZeroEvenOdd* obj) {
 int main(int argc, const char *argv[])
 {
 	ZeroEvenOdd * obj;
-	printf("hello world\n");
 	pthread_t thread_zero, thread_odd, thread_even;
 
 	obj = zeroEvenOddCreate(4);
