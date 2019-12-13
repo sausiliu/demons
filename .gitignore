@@ -9,6 +9,7 @@ venv/
 
 # C extensions
 *.so
+a.out
 
 # Distribution / packaging
 .Python
